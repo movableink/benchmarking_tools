@@ -34,7 +34,7 @@
           <stringProp name="AMQPSampler.RoutingKey">*</stringProp>
           <stringProp name="AMQPSampler.VirtualHost">/</stringProp>
           <stringProp name="AMQPSampler.MessageTTL"></stringProp>
-          <stringProp name="AMQPSampler.ExchangeType">direct</stringProp>
+          <stringProp name="AMQPSampler.ExchangeType">topic</stringProp>
           <stringProp name="AMQPSampler.QueueDurable">true</stringProp>
           <stringProp name="AMQPSampler.QueueExclusive">false</stringProp>
           <stringProp name="AMQPSampler.QueueAutoDelete">false</stringProp>
@@ -61,7 +61,7 @@
           <stringProp name="AMQPSampler.RoutingKey">jmeterRoutingKey</stringProp>
           <stringProp name="AMQPSampler.VirtualHost">/</stringProp>
           <stringProp name="AMQPSampler.MessageTTL"></stringProp>
-          <stringProp name="AMQPSampler.ExchangeType">direct</stringProp>
+          <stringProp name="AMQPSampler.ExchangeType">topic</stringProp>
           <stringProp name="AMQPSampler.QueueDurable">true</stringProp>
           <stringProp name="AMQPSampler.QueueExclusive">false</stringProp>
           <stringProp name="AMQPSampler.QueueAutoDelete">false</stringProp>
@@ -75,8 +75,8 @@
           <stringProp name="AMQPSampler.SSL">false</stringProp>
           <boolProp name="AMQPConsumer.Persistent">false</boolProp>
           <boolProp name="AMQPConsumer.UseTx">false</boolProp>
-          <stringProp name="AMQPPublisher.MessageRoutingKey"></stringProp>
-          <stringProp name="AMQPPublisher.Message"></stringProp>
+          <stringProp name="AMQPPublisher.MessageRoutingKey">jmeterRoutingKey</stringProp>
+          <stringProp name="AMQPPublisher.Message">Hello world</stringProp>
           <stringProp name="AMQPPublisher.MessageType"></stringProp>
           <stringProp name="AMQPPublisher.ReplyToQueue"></stringProp>
           <stringProp name="AMQPPublisher.CorrelationId"></stringProp>
@@ -106,7 +106,7 @@
           <stringProp name="AMQPSampler.RoutingKey">jmeterRoutingKey</stringProp>
           <stringProp name="AMQPSampler.VirtualHost">/</stringProp>
           <stringProp name="AMQPSampler.MessageTTL"></stringProp>
-          <stringProp name="AMQPSampler.ExchangeType">direct</stringProp>
+          <stringProp name="AMQPSampler.ExchangeType">topic</stringProp>
           <stringProp name="AMQPSampler.QueueDurable">true</stringProp>
           <stringProp name="AMQPSampler.QueueExclusive">false</stringProp>
           <stringProp name="AMQPSampler.QueueAutoDelete">false</stringProp>
@@ -120,8 +120,8 @@
           <stringProp name="AMQPSampler.SSL">false</stringProp>
           <boolProp name="AMQPConsumer.Persistent">false</boolProp>
           <boolProp name="AMQPConsumer.UseTx">false</boolProp>
-          <stringProp name="AMQPPublisher.MessageRoutingKey"></stringProp>
-          <stringProp name="AMQPPublisher.Message"></stringProp>
+          <stringProp name="AMQPPublisher.MessageRoutingKey">jmeterRoutingKey</stringProp>
+          <stringProp name="AMQPPublisher.Message">Hello world</stringProp>
           <stringProp name="AMQPPublisher.MessageType"></stringProp>
           <stringProp name="AMQPPublisher.ReplyToQueue"></stringProp>
           <stringProp name="AMQPPublisher.CorrelationId"></stringProp>
@@ -135,14 +135,14 @@
           <stringProp name="AMQPSampler.RoutingKey">jmeterRoutingKey</stringProp>
           <stringProp name="AMQPSampler.VirtualHost">/</stringProp>
           <stringProp name="AMQPSampler.MessageTTL"></stringProp>
-          <stringProp name="AMQPSampler.ExchangeType">direct</stringProp>
+          <stringProp name="AMQPSampler.ExchangeType">topic</stringProp>
           <stringProp name="AMQPSampler.QueueDurable">true</stringProp>
           <stringProp name="AMQPSampler.QueueExclusive">false</stringProp>
           <stringProp name="AMQPSampler.QueueAutoDelete">false</stringProp>
           <boolProp name="AMQPSampler.Redeclare">false</boolProp>
           <stringProp name="AMQPSampler.Timeout">1000</stringProp>
           <stringProp name="AMQPSampler.Iterations">1</stringProp>
-          <stringProp name="AMQPSampler.Host">192.168.111.109</stringProp>
+          <stringProp name="AMQPSampler.Host">192.168.111.107</stringProp>
           <stringProp name="AMQPSampler.Port">5672</stringProp>
           <stringProp name="AMQPSampler.Username">admin</stringProp>
           <stringProp name="AMQPSampler.Password">admin</stringProp>
