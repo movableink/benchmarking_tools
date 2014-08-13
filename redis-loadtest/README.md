@@ -8,5 +8,5 @@ Usage:
 
 Example:
 ```
-./redis-loadtest -t 4 -f messages.json -h some-remote-server.com:4567 rpush clerk_data
+$ ./redis-loadtest -t 4 -f messages.json -h some-remote-server.com:4567 rpush clerk_data
 ```
