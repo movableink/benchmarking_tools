@@ -6,15 +6,17 @@ import (
 	"log"
 	"os"
 	"sync"
+	"time"
 
 	"github.com/garyburd/redigo/redis"
 )
 
 func main() {
-	var threadCt int
+	var threadCt, numberOfRequests, reqsSec int
 	var host, filename string
 
 	flag.IntVar(&threadCt, "t", 1, "Number of threads")
+	flag.IntVar(&reqsSec, "r", 200, "Requests a second")
 	flag.StringVar(&host, "h", ":6379", "Redis host")
 	flag.StringVar(&filename, "f", "", "Source Data Filename (required)")
 	flag.Parse()
@@ -37,6 +39,7 @@ func main() {
 
 	for i := 0; i < threadCt; i++ {
 		go func() {
+			throttle := time.Tick(time.Second / time.Duration(reqsSec))
 			conn, err := redis.Dial("tcp", host)
 
 			if err != nil {
@@ -48,24 +51,37 @@ func main() {
 			}
 			defer file.Close()
 
-			scanner := bufio.NewScanner(file)
-			for scanner.Scan() {
-				result, err := conn.Do(redisCmd, redisKey, scanner.Text())
+			for {
+				file.Seek(0, 0)
+				scanner := bufio.NewScanner(file)
+				for scanner.Scan() {
+					<-throttle
+					_, err := conn.Do(redisCmd, redisKey, scanner.Text())
 
-				if err != nil {
-					log.Fatal(err)
-				} else {
-					log.Println(result)
+					if err != nil {
+						log.Fatal(err)
+					} else {
+						numberOfRequests += 1
+					}
 				}
-			}
 
-			if err := scanner.Err(); err != nil {
-				log.Fatal(err)
+				if err := scanner.Err(); err != nil {
+					log.Fatal(err)
+				}
 			}
 
 			wg.Done()
 		}()
 	}
+
+	printTick := time.Tick(time.Second)
+	go func() {
+		for {
+			<-printTick
+			log.Println("Req/s", numberOfRequests)
+			numberOfRequests = 0
+		}
+	}()
 
 	wg.Wait()
 }
